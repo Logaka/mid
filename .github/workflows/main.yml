@@ -33,7 +33,7 @@ jobs:
 
     steps:
       - name: Pull Docker Image
-        run: docker pull $DOCKER_USERNAME/repo:latest
+        run: docker pull logaka/repo:latest
       - name: Delete old repo
         run: docker rm -f repo-container || true
       - name: Run Docker Image
