@@ -37,7 +37,7 @@ jobs:
       - name: Delete old repo
         run: docker rm -f repo-container || true
       - name: Run Docker Image
-        run: dokcer run -d -p 80:8080 --name repo-container $DOCKER_USERNAME/repo:latest
+        run: dokcer run -d -p 80:8080 --name repo-container logaka/repo:latest
 
 
 
