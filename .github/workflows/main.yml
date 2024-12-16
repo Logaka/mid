@@ -18,7 +18,7 @@ jobs:
         env: 
            DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
            DOCKER_PASWWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: docker run login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - name: Build Docker Image
         run: docker build -t $DOCKER_USERNAME/repo .
