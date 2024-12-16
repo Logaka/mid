@@ -1,0 +1,38 @@
+name: Configuring ci/cd
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Login DockerHub
+        env: 
+           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+           DOCKER_PASWWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker run login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+      - name: Build Docker Image
+        run: docker build -t $DOCKER_USERNAME/repo .
+      - name: Push Docker Image
+        run: docker push $DOCKER_USERNAME/repo:latest
+        if: always()
+        
+  # cd:
+  #   needs: 
+  #     - ci
+  #   runs-on: ec2
+
+  #   steps:
+      
+
+
+
+
+    
+    
