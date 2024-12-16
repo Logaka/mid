@@ -21,7 +21,7 @@ jobs:
         run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 
       - name: Build Docker Image
-        run: docker build -t $DOCKER_USERNAME/repo .
+        run: docker build -t logaka/repo .
       - name: Push Docker Image
         run: docker push $DOCKER_USERNAME/repo:latest
         if: always()
